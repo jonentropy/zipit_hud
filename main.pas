@@ -46,6 +46,7 @@ type
     lblAlbum: TLabel;
     lblUser: TLabel;
     lblArtist: TLabel;
+    stAbout: TStaticText;
     tmrPlaylist: TTimer;
     XMLPropStorage1: TXMLPropStorage;
     procedure FormDestroy(Sender: TObject);
@@ -119,6 +120,8 @@ begin
   lblUser.Visible := state = gsHUD;
   lblArtist.Visible := state = gsHUD;
   imNowPlaying.Visible := state = gsHUD;
+
+  stAbout.Visible := state = gsAbout;
 
   edtHost.Visible := state = gsSettings;
   edtPort.Visible := state = gsSettings;
