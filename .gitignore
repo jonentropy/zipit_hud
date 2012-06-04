@@ -2,4 +2,5 @@ lib/
 backup/
 zipit_hud
 *.lps
-
+zipit_hud.app/
+zipit_hud.exe
