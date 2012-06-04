@@ -67,6 +67,7 @@ object frmMain: TfrmMain
     Top = 120
     Width = 200
     TabOrder = 1
+    Text = '6633'
   end
   object lblArtist: TLabel
     Left = 96
