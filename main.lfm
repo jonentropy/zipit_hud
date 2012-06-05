@@ -39,7 +39,7 @@ object frmMain: TfrmMain
   end
   object edtHost: TEdit
     Left = 96
-    Height = 22
+    Height = 27
     Top = 83
     Width = 200
     OnKeyDown = edtKeyDown
@@ -47,7 +47,7 @@ object frmMain: TfrmMain
   end
   object edtPort: TEdit
     Left = 96
-    Height = 22
+    Height = 27
     Top = 120
     Width = 200
     OnKeyDown = edtKeyDown
@@ -68,17 +68,17 @@ object frmMain: TfrmMain
   end
   object lblHost: TLabel
     Left = 16
-    Height = 17
+    Height = 18
     Top = 88
-    Width = 72
+    Width = 76
     Caption = 'hgd Server:'
     ParentColor = False
   end
   object lblPort: TLabel
     Left = 16
-    Height = 17
+    Height = 18
     Top = 125
-    Width = 59
+    Width = 63
     Caption = 'hgd Port:'
     ParentColor = False
   end
@@ -123,7 +123,7 @@ object frmMain: TfrmMain
     Top = 8
     Width = 302
     Alignment = taCenter
-    Caption = 'zipit_hud    Help    Commands: Ctrl-H : HUD Mode Ctrl-S : Settings Mode Ctrl-Q : See who queued the song Ctrl-A : About H : Show this help text'
+    Caption = 'zipit_hud Help'#10'   '#10'Commands: '#10#10'Ctrl-H : HUD Mode '#10'Ctrl-S : Settings Mode '#10'Ctrl-Q : See who queued the song '#10'Ctrl-A : About '#10'H : Show this help text'
     TabOrder = 3
   end
   object tmrPlaylist: TTimer
