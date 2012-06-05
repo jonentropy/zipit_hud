@@ -31,7 +31,7 @@ uses
 
 type
 
-  TGUIState = (gsHUD, gsSettings, gsAbout);
+  TGUIState = (gsHUD, gsSettings, gsAbout, gsQueuedBy, gsHelp);
 
   { TfrmMain }
 
@@ -39,16 +39,19 @@ type
     edtHost: TEdit;
     edtPort: TEdit;
     imNowPlaying: TImage;
-    Label1: TLabel;
+    lblTitle: TLabel;
     lblHost: TLabel;
     lblPort: TLabel;
-    lblTitle: TLabel;
     lblAlbum: TLabel;
     lblUser: TLabel;
     lblArtist: TLabel;
+    Shape1: TShape;
     stAbout: TStaticText;
+    stHelp: TStaticText;
     tmrPlaylist: TTimer;
     XMLPropStorage1: TXMLPropStorage;
+    procedure edtKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
@@ -92,7 +95,14 @@ begin
     else if Key = VK_A then
       SetGUIState(gsAbout)
     else if Key = VK_H then
-      SetGUIState(gsHUD);
+      SetGUIState(gsHUD)
+    else if Key = VK_Q then
+      SetGUIState(gsQueuedBy);
+  end
+  else
+  begin
+    if Key = VK_H then
+      SetGUIState(gsHelp);
   end;
 end;
 
@@ -100,6 +110,13 @@ procedure TfrmMain.FormDestroy(Sender: TObject);
 begin
   FLastFM.Free();
   FClient.Free();
+end;
+
+procedure TfrmMain.edtKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if not TEdit(Sender).Visible then
+    Key := 0;
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
@@ -115,13 +132,20 @@ end;
 
 procedure TfrmMain.SetGUIState(state: TGUIState);
 begin
+  tmrPlaylist.Enabled := state in [gsHUD, gsQueuedBy];
+
   lblAlbum.Visible := state = gsHUD;
   lblTitle.Visible := state = gsHUD;
-  lblUser.Visible := state = gsHUD;
   lblArtist.Visible := state = gsHUD;
-  imNowPlaying.Visible := state = gsHUD;
+
+  imNowPlaying.Visible := (state in [gsHUD, gsQueuedBy]);
+  Shape1.Visible := (state in [gsHUD, gsQueuedBy]);
 
   stAbout.Visible := state = gsAbout;
+
+  stHelp.Visible := state = gsHelp;
+
+  lblUser.Visible := state = gsQueuedBy;
 
   edtHost.Visible := state = gsSettings;
   edtPort.Visible := state = gsSettings;
@@ -130,7 +154,7 @@ begin
   if state = gsSettings then
     edtHost.SetFocus();
 
-  if state = gsHUD then
+  if state in [gsHUD, gsQueuedBy] then
     ApplyChanges();
 end;
 
@@ -181,9 +205,10 @@ begin
         begin
           //Playing track has changed, get artwork
           imNowPlaying.Visible := True;
+          Shape1.Visible := True;
 
           if FLastFM.GetAlbumArt(NowPlayingSong.Artist, NowPlayingSong.Album,
-            szMedium, imNowPlaying) then
+            szExtraLarge, imNowPlaying) then
           begin
             FCurrentlyDisplayedArtwork := NowPlayingSong.Artist + ':' +
               NowPlayingSong.Album;
@@ -195,6 +220,7 @@ begin
             //Couldn't get artwork, so hide it
             Inc(FArtworkAttempts);
             imNowPlaying.Visible := False;
+            Shape1.Visible := False;
           end;
 
           if (FArtworkAttempts = MAX_ARTWORK_ATTEMPTS) then
@@ -210,6 +236,7 @@ begin
       begin
         //No album information to get art with
         imNowPlaying.Visible := False;
+        Shape1.Visible := False;
       end;
     end
     else
@@ -222,6 +249,7 @@ begin
       FCurrentlyDisplayedArtwork := '';
       imNowPlaying.Picture.Clear();
       imNowPlaying.Visible := False;
+      Shape1.Visible := False;
     end;
   end
   else
@@ -233,6 +261,7 @@ begin
     FCurrentlyDisplayedArtwork := '';
     imNowPlaying.Picture.Clear();
     imNowPlaying.Visible := False;
+    Shape1.Visible := False;
   end;
 
   tmrPlaylist.Enabled := True;

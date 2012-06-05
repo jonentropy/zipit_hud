@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 280
+  Left = 212
   Height = 240
-  Top = 205
+  Top = 190
   Width = 320
   BorderStyle = bsNone
   Caption = 'hgd zipit display'
@@ -13,43 +13,26 @@ object frmMain: TfrmMain
   OnShow = FormShow
   SessionProperties = 'edtHost.Text;edtPort.Text'
   LCLVersion = '0.9.30.4'
-  object Label1: TLabel
-    Left = 40
-    Height = 1
-    Top = 96
-    Width = 1
-    ParentColor = False
-  end
-  object imNowPlaying: TImage
-    Left = 16
-    Height = 64
-    Top = 16
-    Width = 64
-    Stretch = True
-  end
-  object lblTitle: TLabel
-    Left = 96
-    Height = 1
-    Top = 17
-    Width = 1
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-  end
   object lblAlbum: TLabel
-    Left = 96
-    Height = 1
-    Top = 40
-    Width = 1
+    Left = 0
+    Height = 17
+    Top = 192
+    Width = 320
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Album Name'
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object lblUser: TLabel
-    Left = 96
-    Height = 1
-    Top = 88
-    Width = 1
+    Left = 0
+    Height = 17
+    Top = 192
+    Width = 320
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Queued by '
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
@@ -59,6 +42,7 @@ object frmMain: TfrmMain
     Height = 22
     Top = 83
     Width = 200
+    OnKeyDown = edtKeyDown
     TabOrder = 0
   end
   object edtPort: TEdit
@@ -66,14 +50,18 @@ object frmMain: TfrmMain
     Height = 22
     Top = 120
     Width = 200
+    OnKeyDown = edtKeyDown
     TabOrder = 1
     Text = '6633'
   end
   object lblArtist: TLabel
-    Left = 96
-    Height = 1
-    Top = 64
-    Width = 1
+    Left = 0
+    Height = 17
+    Top = 216
+    Width = 320
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Artist'
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
@@ -95,23 +83,59 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object stAbout: TStaticText
-    Left = 10
+    Left = 8
     Height = 217
-    Top = 7
+    Top = 8
     Width = 302
     Caption = 'Copyright (c) 2012, Tristan Linnell <tris@canthack.org>   Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. '
     TabOrder = 2
+  end
+  object lblTitle: TLabel
+    Left = 0
+    Height = 17
+    Top = 168
+    Width = 320
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Title'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Shape1: TShape
+    Left = 82
+    Height = 156
+    Top = 6
+    Width = 156
+    Brush.Color = 16769450
+    Pen.Color = 7087645
+  end
+  object imNowPlaying: TImage
+    Left = 84
+    Height = 152
+    Top = 8
+    Width = 152
+    Stretch = True
+  end
+  object stHelp: TStaticText
+    Left = 8
+    Height = 217
+    Top = 8
+    Width = 302
+    Alignment = taCenter
+    Caption = 'zipit_hud    Help    Commands: Ctrl-H : HUD Mode Ctrl-S : Settings Mode Ctrl-Q : See who queued the song Ctrl-A : About H : Show this help text'
+    TabOrder = 3
   end
   object tmrPlaylist: TTimer
     Enabled = False
     Interval = 3000
     OnTimer = tmrPlaylistTimer
-    left = 25
-    top = 180
+    left = 32
+    top = 24
   end
   object XMLPropStorage1: TXMLPropStorage
     StoredValues = <>
-    left = 113
-    top = 175
+    left = 264
+    top = 24
   end
 end
