@@ -94,14 +94,11 @@ begin
       SetGUIState(gsSettings)
     else if Key = VK_A then
       SetGUIState(gsAbout)
-    else if Key = VK_H then
+    else if Key = VK_D then
       SetGUIState(gsHUD)
-    else if Key = VK_Q then
-      SetGUIState(gsQueuedBy);
-  end
-  else
-  begin
-    if Key = VK_H then
+    else if Key = VK_B then
+      SetGUIState(gsQueuedBy)
+    else if Key = VK_H then
       SetGUIState(gsHelp);
   end;
 end;
@@ -124,8 +121,8 @@ begin
   FCurrentlyDisplayedArtwork := '';
   FArtworkAttempts := 0;
 
-  FClient := THGDClient.Create(edtHost.Text, edtPort.Text, '', '', False, False);
-  FLastFM := TLastFM.Create('', GetAppConfigDirUTF8(False), False);
+  FClient := THGDClient.Create(edtHost.Text, edtPort.Text, '', '', False, True);
+  FLastFM := TLastFM.Create('', GetAppConfigDirUTF8(False), True);
 
   SetGUIState(gsHUD);
 end;
