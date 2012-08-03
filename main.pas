@@ -121,8 +121,12 @@ begin
   FCurrentlyDisplayedArtwork := '';
   FArtworkAttempts := 0;
 
-  FClient := THGDClient.Create(edtHost.Text, edtPort.Text, '', '', False, True);
-  FLastFM := TLastFM.Create('', GetAppConfigDirUTF8(False), True);
+  FClient := THGDClient.Create();
+  FClient.Timeout := 10000; //Higher value for Zipit
+  FClient.HostAddress := edtHost.Text;
+  FClient.HostPort := edtPort.Text;
+
+  FLastFM := TLastFM.Create('', GetAppConfigDirUTF8(False), False);
 
   SetGUIState(gsHUD);
 end;
@@ -205,7 +209,7 @@ begin
           Shape1.Visible := True;
 
           if FLastFM.GetAlbumArt(NowPlayingSong.Artist, NowPlayingSong.Album,
-            szExtraLarge, imNowPlaying) then
+            szLarge, imNowPlaying) then
           begin
             FCurrentlyDisplayedArtwork := NowPlayingSong.Artist + ':' +
               NowPlayingSong.Album;

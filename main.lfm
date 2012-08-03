@@ -1,12 +1,13 @@
 object frmMain: TfrmMain
-  Left = 212
+  Left = 325
   Height = 240
-  Top = 190
+  Top = 125
   Width = 320
   BorderStyle = bsNone
   Caption = 'hgd zipit display'
   ClientHeight = 240
   ClientWidth = 320
+  Color = clBlack
   KeyPreview = True
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
@@ -21,6 +22,7 @@ object frmMain: TfrmMain
     Alignment = taCenter
     AutoSize = False
     Caption = 'Album Name'
+    Font.Color = clSilver
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
@@ -33,13 +35,14 @@ object frmMain: TfrmMain
     Alignment = taCenter
     AutoSize = False
     Caption = 'Queued by '
+    Font.Color = clSilver
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object edtHost: TEdit
     Left = 96
-    Height = 27
+    Height = 19
     Top = 83
     Width = 200
     OnKeyDown = edtKeyDown
@@ -47,7 +50,7 @@ object frmMain: TfrmMain
   end
   object edtPort: TEdit
     Left = 96
-    Height = 27
+    Height = 19
     Top = 120
     Width = 200
     OnKeyDown = edtKeyDown
@@ -62,32 +65,40 @@ object frmMain: TfrmMain
     Alignment = taCenter
     AutoSize = False
     Caption = 'Artist'
+    Font.Color = clSilver
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object lblHost: TLabel
     Left = 16
-    Height = 18
+    Height = 14
     Top = 88
-    Width = 76
+    Width = 57
     Caption = 'hgd Server:'
+    Font.Color = clSilver
     ParentColor = False
+    ParentFont = False
   end
   object lblPort: TLabel
     Left = 16
-    Height = 18
+    Height = 14
     Top = 125
-    Width = 63
+    Width = 45
     Caption = 'hgd Port:'
+    Font.Color = clSilver
     ParentColor = False
+    ParentFont = False
   end
   object stAbout: TStaticText
     Left = 8
     Height = 217
     Top = 8
     Width = 302
-    Caption = 'Copyright (c) 2012, Tristan Linnell <tris@canthack.org>   Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. '
+    Alignment = taCenter
+    Caption = 'zipit_hud'#10#10'Copyright (c) 2012, Tristan Linnell <tris@canthack.org>'#10#10'Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. '
+    Font.Color = clSilver
+    ParentFont = False
     TabOrder = 2
   end
   object lblTitle: TLabel
@@ -98,6 +109,7 @@ object frmMain: TfrmMain
     Alignment = taCenter
     AutoSize = False
     Caption = 'Title'
+    Font.Color = clSilver
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
@@ -110,21 +122,23 @@ object frmMain: TfrmMain
     Brush.Color = 16769450
     Pen.Color = 7087645
   end
-  object imNowPlaying: TImage
-    Left = 84
-    Height = 152
-    Top = 8
-    Width = 152
-    Stretch = True
-  end
   object stHelp: TStaticText
     Left = 8
     Height = 217
     Top = 8
     Width = 302
     Alignment = taCenter
-    Caption = 'zipit_hud Help'#10'   '#10'Commands: '#10#10'Ctrl-H : HUD Mode '#10'Ctrl-S : Settings Mode '#10'Ctrl-Q : See who queued the song '#10'Ctrl-A : About '#10'H : Show this help text'
+    Caption = 'zipit_hud Help'#10'   '#10'Commands: '#10#10'Ctrl-D or Return : HUD Mode '#10'Ctrl-S : Settings Mode '#10'Ctrl-B : See who queued the song '#10'Ctrl-A : About '#10'Ctrl-H : Show this help text'#10'Smiley Face (Esc) : Quit'
+    Font.Color = clSilver
+    ParentFont = False
     TabOrder = 3
+  end
+  object imNowPlaying: TImage
+    Left = 84
+    Height = 152
+    Top = 8
+    Width = 152
+    Stretch = True
   end
   object tmrPlaylist: TTimer
     Enabled = False
